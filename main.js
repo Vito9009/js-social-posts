@@ -139,10 +139,15 @@ let numberLike = document.querySelectorAll(".js-likes-counter");
 
 
 for (let i = 0; i < posts.length; i++){                                      // Aggiunta like (con possibilità di rimuoverlo),
-    likeBtn[i].addEventListener("click", function() {                        // con incremento like, ma senza decremento quando si rimuove il like 
+    likeBtn[i].addEventListener("click", function() {                        // con incremento e decremento like 
 
         this.classList.toggle("like-button--liked");
-        document.getElementById("like-counter-"+i).innerHTML = posts[i].likes+1;
+        
+        if (this.classList.contains("like-button--liked")){
+            document.getElementById("like-counter-"+i).innerHTML = posts[i].likes + 1;
+        }else{
+            document.getElementById("like-counter-"+i).innerHTML = posts[i].likes;     //mettendo posts[i].likes -1 non si torna al numero precedente al like,
+        }                                                                              // ma viene rimosso un like (quind in questo caso va a 79)
         
     }
 );
