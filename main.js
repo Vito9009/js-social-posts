@@ -89,7 +89,7 @@ let containerPost = document.getElementById("container");    // Selezionare il c
 
 let userPost = "";
 
-for (let i=0; i<posts.length; i++){                          //
+for (let i = 0; i < posts.length; i++){                          //
     
     if (posts[i].author.image == null) {
         posts[i].author.image = "https://unsplash.it/300/300?image=4";   
@@ -104,7 +104,7 @@ for (let i=0; i<posts.length; i++){                          //
                 </div>
                 <div class="post-meta__data">
                     <div class="post-meta__author">${posts[i].author.name}</div>
-                    <div class="post-meta__time">4 mesi fa</div>
+                    <div class="post-meta__time">${posts[i].created}</div>
                 </div>                    
             </div>
         </div>
@@ -115,7 +115,7 @@ for (let i=0; i<posts.length; i++){                          //
         <div class="post__footer">
             <div class="likes js-likes">
                 <div class="likes__cta">
-                    <a class="like-button  js-like-button" href="#" data-postid="${posts[i].id}">
+                    <a class="like-button  js-like-button" href=" #!" data-postid="${posts[i].id}">
                         <i class="like-button__icon fas fa-thumbs-up" aria-hidden="true"></i>
                         <span class="like-button__label">Mi Piace</span>
                     </a>
@@ -131,3 +131,16 @@ for (let i=0; i<posts.length; i++){                          //
 
 
 containerPost.innerHTML += userPost;           // Stampa in HTML i posts
+
+
+let likeBtn = document.querySelectorAll(".like-button");
+let numberLike = document.querySelectorAll(".js-likes-counter");
+
+for (let i = 0; i < posts.length; i++){                                        // Aggiunta like (con possibilità di rimuoverlo), ma senza incremento numero like
+    likeBtn[i].addEventListener("click", function() {
+
+        this.classList.toggle("like-button--liked");
+        
+    }
+);
+
