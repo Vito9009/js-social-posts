@@ -121,7 +121,7 @@ for (let i = 0; i < posts.length; i++){                          //
                     </a>
                 </div>
                 <div class="likes__counter">
-                    Piace a <b id="${posts[i].id}" class="js-likes-counter">${posts[i].likes}</b> persone
+                    Piace a <b id="like-counter-${i}" class="js-likes-counter">${posts[i].likes}</b> persone
                 </div>
             </div> 
         </div>            
@@ -133,14 +133,17 @@ for (let i = 0; i < posts.length; i++){                          //
 containerPost.innerHTML += userPost;           // Stampa in HTML i posts
 
 
+
 let likeBtn = document.querySelectorAll(".like-button");
 let numberLike = document.querySelectorAll(".js-likes-counter");
 
-for (let i = 0; i < posts.length; i++){                                        // Aggiunta like (con possibilità di rimuoverlo), ma senza incremento numero like
-    likeBtn[i].addEventListener("click", function() {
+
+for (let i = 0; i < posts.length; i++){                                      // Aggiunta like (con possibilità di rimuoverlo),
+    likeBtn[i].addEventListener("click", function() {                        // con incremento like, ma senza decremento quando si rimuove il like 
 
         this.classList.toggle("like-button--liked");
+        document.getElementById("like-counter-"+i).innerHTML = posts[i].likes+1;
         
     }
 );
-
+}
