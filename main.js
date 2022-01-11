@@ -85,7 +85,15 @@ const posts = [
 
 let containerPost = document.getElementById("container");    // Selezionare il container in HTML dove stampare i posts
 
+let i = 0;
 
+let objDate = posts[i].created.split("-");     // Si crea un array dalla data indicata
+    console.log(objDate);
+let americanDate = objDate[1] + "-" + objDate[2] + "-" + objDate[0];        // Si modifica la disposizionen dedli elementi dell'array
+    console.log("data americana: ", americanDate);                          // per creare la data in formata americano
+
+let italianDate = objDate[2] + "-" + objDate[1] + "-" + objDate[0];         // e la data in formato italiano
+    console.log("data italiana: ", italianDate);
 
 let userPost = "";
 
@@ -94,6 +102,7 @@ for (let i = 0; i < posts.length; i++){                          //
     if (posts[i].author.image == null) {
         posts[i].author.image = "https://unsplash.it/300/300?image=4";   
     }
+    
     
   userPost += `
         <div class="post">
@@ -104,7 +113,7 @@ for (let i = 0; i < posts.length; i++){                          //
                 </div>
                 <div class="post-meta__data">
                     <div class="post-meta__author">${posts[i].author.name}</div>
-                    <div class="post-meta__time">${posts[i].created}</div>
+                    <div class="post-meta__time">${italianDate}</div>
                 </div>                    
             </div>
         </div>
@@ -144,9 +153,9 @@ for (let i = 0; i < posts.length; i++){                                      // 
         this.classList.toggle("like-button--liked");
         
         if (this.classList.contains("like-button--liked")){
-            document.getElementById("like-counter-"+i).innerHTML = posts[i].likes + 1;
+            document.getElementById("like-counter-" + i).innerHTML = posts[i].likes + 1;
         }else{
-            document.getElementById("like-counter-"+i).innerHTML = posts[i].likes;     //mettendo posts[i].likes -1 non si torna al numero precedente al like,
+            document.getElementById("like-counter-" + i).innerHTML = posts[i].likes;     //mettendo posts[i].likes -1 non si torna al numero precedente al like,
         }                                                                              // ma viene rimosso un like (quind in questo caso va a 79)
         
     }
