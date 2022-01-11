@@ -85,19 +85,19 @@ const posts = [
 
 let containerPost = document.getElementById("container");    // Selezionare il container in HTML dove stampare i posts
 
-let i = 0;
-
-let objDate = posts[i].created.split("-");     // Si crea un array dalla data indicata
-    console.log(objDate);
-let americanDate = objDate[1] + "-" + objDate[2] + "-" + objDate[0];        // Si modifica la disposizionen dedli elementi dell'array
-    console.log("data americana: ", americanDate);                          // per creare la data in formata americano
-
-let italianDate = objDate[2] + "-" + objDate[1] + "-" + objDate[0];         // e la data in formato italiano
-    console.log("data italiana: ", italianDate);
 
 let userPost = "";
 
 for (let i = 0; i < posts.length; i++){                          //
+
+    let objDate = posts[i].created.split("-");     // Si crea un array dalla data indicata
+//    console.log(objDate);
+
+// let americanDate = objDate[1] + "-" + objDate[2] + "-" + objDate[0];        // Si modifica la disposizionen dedli elementi dell'array
+//    console.log("data americana: ", americanDate);                          // per creare la data in formata americano
+
+let italianDate = objDate[2] + "-" + objDate[1] + "-" + objDate[0];         // e la data in formato italiano
+//    console.log("data italiana: ", italianDate);
     
     if (posts[i].author.image == null) {
         posts[i].author.image = "https://unsplash.it/300/300?image=4";   
